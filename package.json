@@ -17,7 +17,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*\" \"npm run client\"",
     "server": "npm kill && nodemon",
     "client": "cd client && npm run start",
-    "install": "cd client && npm run install",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "kill": "kill-port 3001",
@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
