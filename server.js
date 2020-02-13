@@ -3,6 +3,8 @@
 
 const path = require('path');
 const express = require('express');
+
+
 // const helmet = require('helmet');
 // const cors = require('cors');
 const session = require('express-session');
@@ -14,6 +16,22 @@ const passport = require('./config/passport');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+app.set('view-engine', 'ejs')
+
+const users = [];
+//passport
+app.get('/', (req, res) => {
+  res.render('index.ejs', { name: 'bob' })
+})
+
+app.get('/login', (req, res) => {
+  res.render('login.ejs')
+})
+
+app.get('/register', (req, res) => {
+  res.render('register.ejs')
+})
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
