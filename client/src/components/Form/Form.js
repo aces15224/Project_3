@@ -1,44 +1,51 @@
-import React, { Component, useRef } from 'react';
-import DropDownDate from "../DropdownDate/DropDownDate"
+import React, {useRef } from 'react';
+import {DropDownDate} from "../DropdownDate/DropDownDate"
+// import API from "../../utils/API";
+import axios from "axios";
 
 
 function Form () {
-    
 
-    
-    // constructor(props) {
-    //     super(props);
-    //     this.state = { date: null, selectedDate: Date()};
-    // }
-const titleRef = useRef();
-const handleFormSubmit = e => {
-    e.preventDefault();
-//    console.log(this.state.selectedDate)
-const object={title: titleRef.current.value}
-console.log(object)
-};   
-    
-    
+const taskRef = useRef();
+const priorityRef = useRef();
+const categoryRef = useRef();
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        // const object={
+        //     taskItem: taskRef.current.value,
+        //     priority:priorityRef.current.value,
+        //     category: categoryRef.current.value}
+        //     addTask(object)
+        axios.post('/api/tasks/', 
+            {   taskItem: taskRef.current.value,
+                priority:priorityRef.current.value,
+                category: categoryRef.current.value,
+            }).then((res) => {
+                console.log(res.config.data)
+                }).catch(err => console.log(err));
 
+                taskRef.current.value = "";
+                priorityRef.current.value = "";
+                categoryRef.current.value = "";
+    };   
         return(
-            // onSubmit={handleFormSubmit}
             <form className="form-group mt-5 mb-5" onSubmit={handleFormSubmit} >
             <div className="form-group">
                 <label className="taskAdd"><h3>Input Task</h3></label>
                 <br></br>
-                <input className="col-12 form-control" ref={titleRef} type="text"
+                <input className="col-12 form-control" ref={taskRef} type="text"
                 // value="J"
                     name="taskForm"
                     placeholder="Add a task"
                     // onChange={handleInputChange}
                 />
-                <select className="custom-select" id="priorityDropDown">
+                <select className="custom-select" id="priorityDropDown"ref={priorityRef}  >
                     <option defaultValue>Add a Priority Alert</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-                <select className="custom-select" id="categoryDropDown">
+                <select className="custom-select" id="categoryDropDown"ref={categoryRef} >
                     <option defaultValue>Select a Category</option>
                     <option value="Career">Career</option>
                     <option value="Education">Education</option>
@@ -48,24 +55,14 @@ console.log(object)
                     <option value="Chores">Chores</option>
                 </select>
                 <DropDownDate/>
-                {/* <DropdownDate 
-                    selectedDate={this.state.selectedDate}
-                    order={['year', 'month', 'day']}
-                    onMonthChange={(month) => {console.log(month);}}
-                    onDayChange={(day) => {console.log(day);}}             
-                    onYearChange={(year) => {console.log(year);}}  
-                    onDateChange={(date) => {console.log(date); this.setState({ date: date, selectedDate: formatDate(date)});
-                    }} />                  */}
-            </div>
+             </div>
             {/* new Date("<YYYY-mm-dd>") */}
             
             <button type="submit" className="submitBtn btn btn-primary"> 
                 Submit
             </button>
         </form>
-        )
-    // }       
+        )      
 }
 
 export default Form
-
