@@ -1,21 +1,30 @@
-import React from "react";
-import TaskBank from "../components/TaskBank/TaskBank"
 
-function taskBank() {
-    return (
+import React, { Component } from 'react';
+
+import TaskBank from "../components/TaskBank/TaskBank";
+import Form from "../components/Form/Form";
+
+
+
+class taskBank extends Component {
+  state={
+    taskGroup:[]
+  }
+
+
+
+render () {
+ return (
       <div>
-       <TaskBank/>
+        <h1>Task Bank</h1>
+        <Form/>
+        <TaskBank/>
         
       </div>
-    );
-  }
-  
+    ); 
+}
+}
   export default taskBank;
 
 
 
-// class TaskBank extends React.Component {
-    
-// }
-
-// export default  TaskBank;
