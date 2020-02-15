@@ -7,28 +7,30 @@ const formatDate = (date) => {	// formats a JS date to 'yyyy-mm-dd'
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
+//     if (month.length < 2) month = '0' + month;
+//     if (day.length < 2) day = '0' + day;
+    const date1=[year, month, day].join('-')
+    
+    return date1;
+    
 }
 
 class DropDownDate extends Component {
     constructor(props) {
         super(props);
-        this.state = { date: null, selectedDate: '2012-11-15' };
+        this.state = { date: "", selectedDate: "", dateNew: ""};
+        
     }
-
     render() {
         return (
             <div>
 
                 <DropdownDate
                     startDate={                         // optional, if not provided 1900-01-01 is startDate
-                        '2012-01-01'                    // 'yyyy-mm-dd' format only
+                        '2020-01-01'                    // 'yyyy-mm-dd' format only
                     }
                     endDate={                           // optional, if not provided current date is endDate
-                        '2013-12-31'                    // 'yyyy-mm-dd' format only
+                        '2025-12-31'                    // 'yyyy-mm-dd' format only
                     }
                     selectedDate={                      // optional
                         this.state.selectedDate         // 'yyyy-mm-dd' format only
@@ -91,9 +93,11 @@ class DropDownDate extends Component {
                             monthCaps: true                 // false by default
                         }
                     }
+                    
                 />
+
             </div>
         );
     }
 }
-export default DropDownDate
+export  {DropDownDate};
