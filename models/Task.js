@@ -20,22 +20,22 @@ var TaskSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  dueDate: {
+    type: Date,
+    default: Date.now
+
+  },
 
   priority: [{
     type: String, 
     enum: ['Low', 'Medium', 'High'], 
     required: false}],
-  
- 
-  user: [{
-    type: Schema.Types.ObjectId,
-    ref: "user"
-  }],
-
+    
   category: [{
-    type: Schema.Types.ObjectId,
-    ref: "category"
-  }]
+    type: String, 
+    enum: ['Career', 'Education', 'Fitness', 'Personal', 'Health', 'Chores'], 
+    required: true}]
+
 });
 
 var Task = mongoose.model("task", TaskSchema);

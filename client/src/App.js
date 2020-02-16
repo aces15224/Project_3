@@ -6,7 +6,7 @@ import NavBar from "./components/NavBar";
 // import TaskList from "./components/TaskList";
 import Calendar from "./pages/calendar";
 // import Dashboard from "./pages/dashboard";
-import taskBank from "./pages/taskBank";
+import taskBank from "./pages/TaskBankHome";
 import PomodoroTimer from "./pages/pomodoroTimer";
 import UserStats from "./pages/userStats";
 import './App.css';

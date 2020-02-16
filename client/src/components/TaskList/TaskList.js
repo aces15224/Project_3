@@ -1,10 +1,24 @@
-import React from 'react'
-class TaskList extends React.Component {
+import React, {useEffect} from 'react'
+import API from "../../utils/API";
 
-  render () {
-    // const { task, remove, taskId } = this.props;
+
+const TaskList = () => {
+// class TaskList extends React.Component {
+
+  const getTasks = () => {
+
+
+    API.getTasks()
+    .then(res => {
+      console.log("success")
+      }).catch(err => console.log(err));
+};
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+    
   const task= {Category: "Coding", Tasks :["This", "That"]}
-  // const task= [{Category: "Coding", Tasks :["This", "That"]},{Category: "Coding", Tasks :["This", "That"]}]
 
 
     return (
@@ -31,7 +45,8 @@ class TaskList extends React.Component {
     </div> 
      
       )
-  }}
+  
+}
 
 
 export default TaskList;
