@@ -43,12 +43,7 @@ const complete = () => {
   const task= {Category: "Coding", Tasks :["This", "That"]}
 
 
-  return (
-    <ul className="list-group">
-          {taskObject.map(eachTask => (
-            <li className="list-group-item">
-              
-            
+  return (           
     <div id="accordion">
       <div className="card">
         <div className="card-header" id="headingOne">
@@ -80,9 +75,7 @@ const complete = () => {
         </div>
       </div>
     </div> 
-    </li>
-          ))}
-        </ul>
+    
   )
   
 }
