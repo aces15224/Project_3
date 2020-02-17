@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
   taskItem: {
-    type: Array,
+    type: String,
     required: true
   },
   completed: {

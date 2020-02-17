@@ -15,7 +15,9 @@ export default {
   },
   // Saves a task to the database
   postTask: function(taskData) {
-    return axios.post("/api/tasks", taskData);
+    return axios.post("/api/tasks", taskData)
+    .then(console.log(taskData))
+    .catch(err => console.log(err));
   }
 };
 

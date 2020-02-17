@@ -43,11 +43,8 @@ setTaskObject({
 })
                
 //post Info to API
-// API.postTask(object)
-API.postTask({taskData})
-.then(result => result.data)
-    .catch(err => console.log(err));
-
+API.postTask(taskData)
+.then(console.log(taskData))
     taskRef.current.value = "";
     priorityRef.current.value = "";
     categoryRef.current.value = "";
