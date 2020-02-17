@@ -14,7 +14,10 @@ export default {
     return axios.delete("/api/tasks/" + id);
   },
   // Saves a task to the database
-  saveTask: function(postData) {
-    return axios.post("/api/tasks", postData);
+  postTask: function(taskData) {
+    return axios.post("/api/tasks", taskData)
+    .then(console.log(taskData))
+    .catch(err => console.log(err));
   }
 };
+
