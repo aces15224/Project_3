@@ -1,40 +1,61 @@
 import React, {useRef } from 'react';
-import {DropDownDate} from "../DropdownDate/DropDownDate"
-// import API from "../../utils/API";
-import axios from "axios";
+import DropDownDate from "../DropdownDate/DropDownDate"
+import API from "../../utils/API";
+// import axios from "axios";
 
-
-function Form () {
-
+const Form = ({setTaskObject, taskObject}) => {
 const taskRef = useRef();
+const newDate = useRef(); 
 const priorityRef = useRef();
 const categoryRef = useRef();
+
+
+
     const handleFormSubmit = e => {
         e.preventDefault();
-        // const object={
-        //     taskItem: taskRef.current.value,
-        //     priority:priorityRef.current.value,
-        //     category: categoryRef.current.value}
-        //     addTask(object)
-        axios.post('/api/tasks/', 
-            {   taskItem: taskRef.current.value,
-                priority:priorityRef.current.value,
-                category: categoryRef.current.value,
-            }).then((res) => {
-                console.log(res.config.data)
-                }).catch(err => console.log(err));
 
-                taskRef.current.value = "";
-                priorityRef.current.value = "";
-                categoryRef.current.value = "";
-    };   
-        return(
+        //format date from DropDown Selector//
+
+        var d = new Date(newDate.current),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        const date1=[year, month, day].join('-');
+   
+// create object using form data & dropdown
+var taskData = {
+    taskItem: taskRef.current.value,
+    priority:priorityRef.current.value,
+    category: categoryRef.current.value,
+    dueDate:date1 
+}
+console.log(taskData)
+
+setTaskObject({
+    taskItem: taskRef.current.value,
+    priority:priorityRef.current.value,
+    category: categoryRef.current.value,
+    dueDate:date1 
+})
+               
+//post Info to API
+API.postTask(taskData)
+.then(console.log(taskData))
+    taskRef.current.value = "";
+    priorityRef.current.value = "";
+    categoryRef.current.value = "";
+    };  
+     
+        return(         
             <form className="form-group mt-5 mb-5" onSubmit={handleFormSubmit} >
             <div className="form-group">
                 <label className="taskAdd"><h3>Input Task</h3></label>
                 <br></br>
                 <input className="col-12 form-control" ref={taskRef} type="text"
-                // value="J"
                     name="taskForm"
                     placeholder="Add a task"
                     // onChange={handleInputChange}
@@ -47,14 +68,15 @@ const categoryRef = useRef();
                 </select>
                 <select className="custom-select" id="categoryDropDown"ref={categoryRef} >
                     <option defaultValue>Select a Category</option>
-                    <option value="Career">Career</option>
-                    <option value="Education">Education</option>
-                    <option value="Fitness">Fitness</option>
-                    <option value="Personal">Personal</option>
-                    <option value="Health">Health</option>
-                    <option value="Chores">Chores</option>
+                    <option value='Career'>Career</option>
+                    <option value='Education'>Education</option>
+                    <option value='Fitness'>Fitness</option>
+                    <option value='Personal'>Personal</option>
+                    <option value='Health'>Health</option>
+                    <option value='Chores'>Chores</option>
                 </select>
-                <DropDownDate/>
+                <DropDownDate newDate={newDate} />
+
              </div>
             {/* new Date("<YYYY-mm-dd>") */}
             
