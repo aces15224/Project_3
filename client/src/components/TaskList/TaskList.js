@@ -22,11 +22,14 @@ const taskPopulate = () =>{
     category: "Career",
     dueDate: "2025-02-16"}]
 )
+
 console.log(taskObject)
 };
+
+const complete = () => {
+  alert ("done")
+}
   const getTasks = () => {
-
-
     API.getTasks()
     .then(res => {
       console.log(JSON.stringify(res))
@@ -40,13 +43,18 @@ console.log(taskObject)
   const task= {Category: "Coding", Tasks :["This", "That"]}
 
 
-    return (
-
+  return (
+    <ul className="list-group">
+          {taskObject.map(eachTask => (
+            <li className="list-group-item">
+              
+            
     <div id="accordion">
       <div className="card">
         <div className="card-header" id="headingOne">
           <h5 className="mb-0">
-            <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" onClick={taskPopulate}>
+            <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
+            aria-controls="collapseOne" onClick={taskPopulate}>
               {task.Category}
             </button>
           </h5>
@@ -54,27 +62,31 @@ console.log(taskObject)
         <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
           <div className="card-body">
             <ul>
-              {taskObject.taskItem}
-             {/* {task.Tasks.map((value, index) => {
-               return <li key={index}>{value}</li>
-             })} */}
+              {Object.entries(taskObject).map(([key, value], i) => {
+           //////////////////revise conditional statement////////////////////////////////
+                if(value.category==="Career")
+          //////////////////revise conditional statement////////////////////////////////
+
+                return (
+                <div className="card"key={key}> Due: {value.dueDate}  Priority Level: {value.priority}
+                    <div className="card-header">
+                        Task: {value.taskItem}<button className="btn btn-danger btn-xs" onClick={() => complete()}>Completed</button>
+                    </div>
+                </div>
+                )
+              })}
            </ul>
           </div>
         </div>
       </div>
     </div> 
-     
-      )
+    </li>
+          ))}
+        </ul>
+  )
   
 }
 
 
 export default TaskList;
-
-////////////Take out code below upon completion/////////////////
-
-
-{/* // <td><button className="btn btn-danger btn-xs" onClick={() => {inProgress(taskId)}} >In Progress</button></td> */}
-        // {/* <td><button className="btn btn-danger btn-xs" onClick={() => add} >x</button></td>
-        // <td><button className="btn btn-danger btn-xs" onClick={() => add} >x</button></td> */}
 
