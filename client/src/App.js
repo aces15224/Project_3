@@ -4,9 +4,9 @@ import NavBar from "./components/NavBar";
 // import Wrapper from "./components/Wrapper";
 // import TaskBank from "./components/TaskBank";
 // import TaskList from "./components/TaskList";
-import CalendarPage from "./pages/calendar";
+import Calendar from "./pages/calendar";
 // import Dashboard from "./pages/dashboard";
-import taskBank from "./pages/TaskBankHome";
+import taskBank from "./pages/taskBank";
 import PomodoroTimer from "./pages/pomodoroTimer";
 import UserStats from "./pages/userStats";
 import './App.css';
@@ -19,7 +19,7 @@ class App extends Component {
         <div>
           <NavBar />
             
-            <Route exact path="/" component={CalendarPage} />
+            <Route exact path="/" component={Calendar} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/tasks" component={taskBank} />
             <Route exact path="/timer" component={PomodoroTimer} />

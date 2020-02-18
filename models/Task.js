@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
   taskItem: {
-    type: String,
+    type: Array,
     required: true
   },
   completed: {
@@ -20,21 +20,22 @@ var TaskSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  dueDate: {
-    type: Date,
-    default: Date.now
 
-  },
   priority: [{
     type: String, 
     enum: ['Low', 'Medium', 'High'], 
     required: false}],
-    
-  category: [{
-    type: String, 
-    enum: ['Career', 'Education', 'Fitness', 'Personal', 'Health', 'Chores'], 
-    required: true}]
+  
+ 
+  user: [{
+    type: Schema.Types.ObjectId,
+    ref: "user"
+  }],
 
+  category: [{
+    type: Schema.Types.ObjectId,
+    ref: "category"
+  }]
 });
 
 var Task = mongoose.model("task", TaskSchema);
