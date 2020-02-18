@@ -11,24 +11,25 @@
   },
   "homepage": "TBD",
   "scripts": {
-    "start": "if-env NODE_ENV=production && yarn start:prod || yarn start:dev",
+    "devStart": "nodemon server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "yarn kill && concurrently \"nodemon\" \"yarn client\"",
-    "server": "yarn kill && nodemon",
-    "client": "cd client && yarn start",
-    "install": "cd client && yarn install",
-    "build": "cd client && yarn build",
-    "heroku-postbuild": "yarn build",
-    "kill": "kill-port 3001",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*\" \"npm run client\"",
+    "server": "npm kill && nodemon",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "kill": "kill-port 3001  ",
     "lint": "eslint --quiet .",
     "lint:fix": "eslint --fix .",
-    "tests": "yarn kill && NODE_ENV=test nyc --reporter=html --reporter=text mocha tests/**/*.spec.js --exit",
+    "tests": "npm kill && NODE_ENV=test nyc --reporter=html --reporter=text mocha tests/**/*.spec.js --exit",
     "test:coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "nodemonConfig": {
     "events": {
-      "restart": "yarn kill",
-      "crash": "yarn kill"
+      "restart": "npm kill",
+      "crash": "npm kill"
     },
     "delay": "3000",
     "ignore": [
@@ -54,23 +55,32 @@
     "nodemon": "^2.0.2",
     "nyc": "^15.0.0",
     "sequelize-cli": "^5.5.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
     "if-env": "^1.0.4",
+    "moment": "^2.24.0",
+    "mongojs": "^3.1.0",
     "mongoose": "^5.8.11",
+    "morgan": "^1.1.1",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
     "react": "^16.12.0",
+    "react-big-calendar": "^0.24.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
+    "render": "^0.1.4",
     "sequelize": "^4.44.3",
     "yarn": "^1.21.1"
   }
