@@ -1,21 +1,12 @@
 const path = require('path');
 const express = require('express');
-const session = require('express-session');
-const mongoose = require('mongoose');
 const logger = require('morgan');
-
-// const db = require('./models');
 const bodyParser = require('body-parser');
 // const bcrypt = require('bcrypt')
-
-const routes = require('./routes');
 const passport = require('./config/passport');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-
-
 
 // app.set('view-engine', 'ejs')
 // app.use(express.urlencoded({ extended: false }))
@@ -53,27 +44,17 @@ const app = express();
 //   console.log(users)
 // })
 // Define middleware here
-app.use(logger("dev"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(session({ secret: 'TBD', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Mongoose Connection
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds035517.mlab.com:35517/heroku_fj6klq23";
-
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
  
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
-
-
-
-app.use(routes);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (_, res) => {
@@ -81,11 +62,12 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+require('./routes')(app);
+
 app.listen(PORT, function() {
   console.log(
-    "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+    '==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.',
     PORT,
     PORT
   );
 });
-// module.exports = app;

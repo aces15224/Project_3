@@ -1,22 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DropdownDate from 'react-dropdown-date';
 
-// const formatDate = (date) => {	// formats a JS date to 'yyyy-mm-dd'
-//     var d = new Date(date),
-//         month = '' + (d.getMonth() + 1),
-//         day = '' + d.getDate(),
-//         year = d.getFullYear();
-
-// //     if (month.length < 2) month = '0' + month;
-// //     if (day.length < 2) day = '0' + day;
-//     const date1=[year, month, day].join('-');
-//     // const date2=<DropDownDate currentDate={date1}/>
-//     return date1;
-    
-// }
-
 const DropDownDate = (props) => {
-    
+        
     const newDate = props.newDate;
         return (
             

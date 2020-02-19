@@ -67,6 +67,7 @@
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
     "if-env": "^1.0.4",
+    "moment": "^2.24.0",
     "mongojs": "^3.1.0",
     "mongoose": "^5.8.11",
     "morgan": "^1.1.1",
@@ -79,6 +80,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
+    "render": "^0.1.4",
     "sequelize": "^4.44.3",
     "yarn": "^1.21.1"
   }

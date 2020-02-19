@@ -2,10 +2,11 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+
 var TaskSchema = new Schema({
   taskItem: {
     type: String,
-    required: true
+    required: "A Task is Required"
   },
   completed: {
     type: Boolean,
@@ -15,7 +16,6 @@ var TaskSchema = new Schema({
     type: Boolean,
     default: false
   },
-  
   createdOn: {
     type: Date,
     default: Date.now
@@ -23,21 +23,20 @@ var TaskSchema = new Schema({
   dueDate: {
     type: Date,
     default: Date.now
-
   },
-
-  priority: [{
+  priority: {
     type: String, 
-    enum: ['Low', 'Medium', 'High'], 
-    required: false}],
+    enum: ['Daily', 'Weekly', 'Monthly']
+  },
     
-  category: [{
+  category: {
     type: String, 
     enum: ['Career', 'Education', 'Fitness', 'Personal', 'Health', 'Chores'], 
-    required: true}]
+    required: "A Category is Required"
+  }
 
 });
 
-var Task = mongoose.model("task", TaskSchema);
+var Task = mongoose.model("Task", TaskSchema);
 
 module.exports = Task;

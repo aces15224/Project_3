@@ -1,34 +1,32 @@
-const router = require('express').Router();
-// const apiRoutes = require('./api');
+const mongoose = require("mongoose");
+const db = require("../models");
 
-// API Routes
-// router.use('/api/v1', apiRoutes);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds237267.mlab.com:37267/heroku_0n06ck2s";
 
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
+module.exports = function (app) {
 
-
-router.get('/api/tasks', (req, res) => {
-  res.json("Results");
-});
-
-router.post('/api/tasks', (req, res) => {
-  res.send(req.body);
-});
-
-module.exports = router;
+  app.get("/api/tasks", function(req, res) {
+    db.Task.find({}).then(function(dbModel) {
+      res.json(dbModel);
+    });
+  });
 
 
+  app.post("/api/tasks", function(req, res) {
+    db.Task.create({
+      taskItem: req.body.taskItem,
+      completed: false,
+      saved: false,
+      createdOn: req.body.createdOn,
+      priority: req.body.priority,
+      dueDate: req.body.dueDate,
+      category:  req.body.category 
+    }).then(function(dbModel) {
+      console.log("yes!")
+      res.json(dbModel);
+    });
+  });
 
-
-
-// router.get('/api/tasks', (req, res) => {
-//   db.Task.find({}).then((err, result) => res.json(result))
-//     .catch((err) => res.status(422).json(err));
-
-//   // res.json(res.data);
-// });
-
-// router.post('/api/tasks', (req, res) => {
-//   db.Task.create(req.body).then((err, result) => res.json(result))
-//     .catch((err) => res.status(422).json(err));
-// });
+}
