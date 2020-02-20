@@ -1,8 +1,9 @@
 import React from "react";
+import moment from "moment";
 
 const Header = () => <h1>Pomodoro Clock</h1>
 
-const SetTimer = ({ type, value }) => (
+const SetTimer = ({ type, value, handleClick }) => (
   <div class='SetTimer'>
     <div id={`${type}-label`}>{`${type} Length`}</div>
     <div class='SetTimer-controls'>
@@ -15,11 +16,19 @@ const SetTimer = ({ type, value }) => (
 
 const Timer = ({ mode, time }) => (
   <div class='Timer'>
-    <h1>{mode === 'session' ? 'Session' : 'Break'}</h1>
-    <h1>{time}</h1>
+    <h1 id='timer-label'>{mode === 'session' ? 'Session' : 'Break'}</h1>
+    <h1 id='time-left'>{time}</h1>
   </div>
 )
 
+const Controls = ({ active }) => (
+  <div class='Controls'>
+    <button id='start_stop'>
+      { active ? <span>&#10074;&#10074;</span> : <span>&#9658;</span> }
+    </button>
+    <button id='reset'>&#8635;</button>
+  </div>
+)
 
 class PomodoroTimer extends React.Component {
   constructor(props) {
@@ -28,18 +37,25 @@ class PomodoroTimer extends React.Component {
       breakValue: 5,
       sessionValue: 25,
       mode: 'session',
-      time: 25 * 60 * 1000
+      time: 25 * 60 * 1000,
+      active: false
     }
   }
+
+  handleSetTimers = (inc, type) => {
+    this.setState({ [type]: this.state[type] + (inc ? 1 : -1) })
+  }
+
    render() {
      return(
        <div>
          <Header/>
          <div class='settings'>
-           <SetTimer type='Break' value={this.state.breakValue}/>
+           <SetTimer type='Break' value={this.state.breakValue} handleClick={this.handleSetTimers}/>
            <SetTimer type='Session' value={this.state.sessionValue}/>
          </div>
          <Timer mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
+         <Controls active={this.state.active}/>
        </div>
      )
    } 
