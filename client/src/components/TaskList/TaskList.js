@@ -3,6 +3,7 @@ import axios from "axios";
 
 //Global Array for Unique Categories
 const categoryArray = [];
+var category="";
 
 //Tasklist Generates Tasks and corresponding categories//
 
@@ -10,14 +11,12 @@ const TaskList = (props) => {
   const taskObject = props.taskObject;
   const setTaskObject = props.setTaskObject;
  
-// const taskPopulate = () =>{
-//   setTaskObject(
-//     //input results from get call
-//     objectArray
-// )
+const taskPopulate = () =>{
+  console.log("!" + taskObject)
+  console.log("!" + categoryArray);
+  
 
-// console.log(taskObject)
-// };      
+};      
   const objectArray = [];
    //arrayFunction sorts out duplicate values (CATEGORIES)//
 
@@ -87,15 +86,15 @@ const TaskList = (props) => {
   return (        
     <div id="accordion">  
       {categoryArray.length && categoryArray.map((obj, i) => {
-        console.log(obj)
+        category = obj.v;
+        console.log(category)
         return(
           <div className="card" key={i}>
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
                 <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
-                aria-controls="collapseOne" >
-                {/* onClick={taskPopulate}> */}
-                  {obj.v}
+                aria-controls="collapseOne" onClick={taskPopulate}>               
+                  {category}
                 </button>
               </h5>
             </div>
@@ -103,6 +102,7 @@ const TaskList = (props) => {
               <div className="card-body">
                 <ul>
                   {taskObject.length && taskObject.map((obj, i) => {
+                    if(obj.category===category)
                     return (
                       <div className="card" key={i}> Due: {obj.dueDate}  Priority Level: {obj.priority}
                           <div className="card-header">
