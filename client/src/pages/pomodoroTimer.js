@@ -45,4 +45,4 @@ class PomodoroTimer extends React.Component {
    } 
 }
 
-// export default  PomodoroTimer;
+export default  PomodoroTimer;
