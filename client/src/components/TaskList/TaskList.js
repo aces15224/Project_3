@@ -9,11 +9,9 @@ var category="";
 
 const TaskList = (props) => {
   const taskObject = props.taskObject;
-  const setTaskObject = props.setTaskObject;
- 
-// const taskPopulate = () =>{
-// };      
+  const setTaskObject = props.setTaskObject;    
   const objectArray = [];
+  
    //arrayFunction sorts out duplicate values (CATEGORIES)//
 
   const arrayFunction = (preArray)=>{
@@ -95,7 +93,7 @@ const TaskList = (props) => {
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
                 <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
-                aria-controls="collapseOne" onClick={taskPopulate}>               
+                aria-controls="collapseOne">               
                   {category}
                 </button>
               </h5>
