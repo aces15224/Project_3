@@ -11,12 +11,8 @@ const TaskList = (props) => {
   const taskObject = props.taskObject;
   const setTaskObject = props.setTaskObject;
  
-const taskPopulate = () =>{
-  console.log("!" + taskObject)
-  console.log("!" + categoryArray);
-  
-
-};      
+// const taskPopulate = () =>{
+// };      
   const objectArray = [];
    //arrayFunction sorts out duplicate values (CATEGORIES)//
 
@@ -40,7 +36,8 @@ const taskPopulate = () =>{
         taskItem: obj.taskItem,
         priority: obj.priority,
         category: obj.category,
-        dueDate: obj.dueDate
+        dueDate: obj.dueDate,
+        id: obj._id
       }
         //pushes results object into array for tasks & task categories    
         objectArray.push(eachTaskObj)
@@ -56,9 +53,14 @@ const taskPopulate = () =>{
   };
 
   //Click handler that removes completed tasks
-  const complete = () => {
-    alert ("done")
-  }
+  const complete = (key) => {
+    axios.delete("/api/tasks/"+key)
+    .then((res) => {
+      console.log(res);
+    });
+  }   
+  
+
   //GET call that pulls from database
   const getTasks = () => {
     axios.get("/api/tasks")
@@ -104,9 +106,9 @@ const taskPopulate = () =>{
                   {taskObject.length && taskObject.map((obj, i) => {
                     if(obj.category===category)
                     return (
-                      <div className="card" key={i}> Due: {obj.dueDate}  Priority Level: {obj.priority}
+                      <div className="card" key={obj.id}> Due: {obj.dueDate}  Priority Level: {obj.priority}
                           <div className="card-header">
-                              Task: {obj.taskItem}<button className="btn btn-danger btn-xs" onClick={() => complete()}>Completed</button>
+                              Task: {obj.taskItem}<button className="btn btn-danger btn-xs" onClick={() => complete(obj.id)}>Completed</button>
                           </div>
                       </div>
                     )
