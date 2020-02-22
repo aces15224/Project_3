@@ -6,6 +6,20 @@
   height: 40vmin;
   pointer-events: none;
 }
+.nav {
+  height: 150px;
+  background-image: url(./checkMark.jpg);
+  background-repeat: no-repeat;
+}
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 10px !important;
+  margin-top: 10px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -10,14 +10,16 @@ import taskBank from "./pages/TaskBankHome";
 import PomodoroTimer from "./pages/pomodoroTimer";
 import UserStats from "./pages/userStats";
 import './App.css';
+import Header from "./components/Header";
 
 class App extends Component {
  
   render() {
     return (
       <Router>
-        <div>
-          <NavBar />
+        <div class= "container">
+          <Header />
+            <NavBar />
             
             <Route exact path="/" component={CalendarPage} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
