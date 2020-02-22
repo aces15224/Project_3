@@ -56,13 +56,14 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
+require('./routes')(app);
+
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (_, res) => {
     res.sendFile(path.join(__dirname, '/client/build/index.html'));
   });
 }
 
-require('./routes')(app);
 
 app.listen(PORT, function() {
   console.log(
