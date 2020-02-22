@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import './pomodoroTimer.scss'
 
 const Header = () => <h1>Pomodoro Clock</h1>
 
@@ -38,7 +39,19 @@ class PomodoroTimer extends React.Component {
       sessionValue: 25,
       mode: 'session',
       time: 25 * 60 * 1000,
-      active: false
+      active: false,
+      touched: false
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.time == 0 && prevState.mode == 'session') {
+      this.setState({ time: this.state.breakValue * 60 * 1000, mode: 'break' })
+      this.audio.play()
+    }
+    if (prevState.time == 0 && prevState.mode == 'break') {
+      this.setState({ time: this.state.sessionValue * 60 * 1000, mode: 'session'})
+      this.audio.play()
     }
   }
 
@@ -49,8 +62,17 @@ class PomodoroTimer extends React.Component {
   }
 
   handleReset = () => {
-    this.setState({ breakValue: 5, sessionValue: 25, time: 25 * 60 * 1000 })
+    this.setState({ 
+      breakValue: 5, 
+      sessionValue: 25, 
+      time: 25 * 60 * 1000,
+      mode: 'session',
+      touched: false,
+      active: false
+     })
     clearInterval(this.pomodoro)
+    this.audio.pause()
+    this.audio.currentTime = 0
   }
 
   handlePlayPause = () => {
@@ -58,8 +80,16 @@ class PomodoroTimer extends React.Component {
       clearInterval(this.pomodoro)
       this.setState({ active: false })
     } else {
-      this.pomodoro = setInterval(() => this.setState({ time: this.state.time - 1000 }), 1000)
-      this.setState({ active: true })
+      if (this.state.touched) {
+        this.pomodoro = setInterval(() => this.setState({ time: this.state.time - 1000}), 1000)
+        this.setState({ active: true })
+      } else {
+        this.setState({ 
+          time: this.state.sessionValue * 60 * 1000, 
+          touched: true,
+          active: true }, () => this.pomodoro = setInterval(() => this.setState({ time: this.state.time - 1000}), 1000))
+      }
+      
     }
   }
 
@@ -76,6 +106,12 @@ class PomodoroTimer extends React.Component {
           active={this.state.active} 
           handlePlayPause={this.handlePlayPause}
           handleReset={this.handleReset}/>
+          <audio 
+            id='beep' 
+            src='https://s3-us-west-1.amazonaws.com/benjaminadk/Data+synth+beep+high+and+sweet.mp3' 
+            ref={el => this.audio = el}
+            >
+          </audio>
        </div>
      )
    } 
