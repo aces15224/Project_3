@@ -1,23 +1,22 @@
-import React, {useRef } from 'react';
+import React, {useRef, useState } from 'react';
 import DropDownDate from "../DropdownDate/DropDownDate"
 import API from "../../utils/API";
-// import axios from "axios";
+
+
+
 const Form = () => {
+    const [taskForm, setTaskForm] = useState({
+       taskItem: "",
+        createdOn:"",
+        priority:"",
+        dueDate:"",
+        category: ""
+    });
+
     const taskRef = useRef();
     const newDate = useRef(); 
     const priorityRef = useRef();
     const categoryRef = useRef();
-
-////////////Take out code below upon completion/////////////////
-
-// const Form = ({setTaskObject, taskObject}) => {
-//     const taskRef = useRef();
-//     const newDate = useRef(); 
-//     const priorityRef = useRef();
-//     const categoryRef = useRef();
-
-//////////Take out code above upon completion/////////////////
-
 
 //Form Submit Function
 
@@ -30,31 +29,35 @@ const Form = () => {
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-
         if (month.length < 2) month = '0' + month;
         if (day.length < 2) day = '0' + day;
-
         let date1=[year, month, day].join('-');
-   
-        // create object using form data & dropdown
+
+        // format current date//
+        var currentDate = new Date (Date.now()),
+        currentMonth = '' + (currentDate.getMonth() + 1),
+        currentDay = '' + currentDate.getDate(),
+        currentYear = currentDate.getFullYear();
+        if (currentMonth.length < 2) currentMonth = '0' + currentMonth;
+        if (currentDay.length < 2) currentDay = '0' + currentDay;
+        let date2=[currentYear, currentMonth, currentDay].join('-');
+
+        // creFormusing form data & dropdown
         var taskData = {
             taskItem: taskRef.current.value,
-            priority:priorityRef.current.value,
-            category: categoryRef.current.value,
-            dueDate:date1 
+            completed:false,
+            saved: false,
+            createdOn: date2,
+            priority: priorityRef.current.value,
+            dueDate: date1,
+            category: categoryRef.current.value            
         }
-        console.log(taskData)
-////////////Take out code below upon completion/////////////////
-
-        // setTaskObject({
-        //     taskItem: taskRef.current.value,
-        //     priority:priorityRef.current.value,
-        //     category: categoryRef.current.value,
-        //     dueDate:date1 
-        // })
-////////////Take out code above upon completion/////////////////
-              
-        //post Info to API
+        
+        
+        setTaskForm(taskData)     
+        
+        
+        console.log(taskForm)   
         API.postTask(taskData)
         .then(console.log(taskData))
             taskRef.current.value = "";
@@ -73,9 +76,9 @@ const Form = () => {
                 />
                 <select className="custom-select" id="priorityDropDown"ref={priorityRef}  >
                     <option defaultValue>Add a Priority Alert</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Monthly">Monthly</option>
                 </select>
                 <select className="custom-select" id="categoryDropDown"ref={categoryRef} >
                     <option defaultValue>Select a Category</option>
