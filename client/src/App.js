@@ -5,6 +5,7 @@ import CalendarPage from "./pages/calendar";
 import taskBank from "./pages/TaskBankHome";
 import PomodoroTimer from "./pages/pomodoroTimer";
 import UserStats from "./pages/userStats";
+import logo from "./checkMark.jpg"
 import './App.css';
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-4">
-              <NavBar />
+              <NavBar image={logo}/>
             </div>
             <div className="col-8" id="mainDisplay">
               <Route exact path="/" component={CalendarPage} />

@@ -37,22 +37,45 @@
   }
 }
 
+body{
+  background-color:black;
+  margin:0px;
+}
+
+#taskCard{
+  min-height:650px;
+  margin: 0px;
+}
+#logo{
+  width: 100%;
+  border: #495057
+}
 
 .nav{
-  background-color: blue;
   float:left;
   margin-left:0px;
   padding:0px;
 }
 
 #mainDisplay{
-  /* width: 1000px; */
   float:right;
+  background-color: white;
 }
 
 #formContainer{
   float:right;
 }
-#taskBank{
-  float:left;
+
+#select-year, #select-month, #select-day{
+  color:#495057;
+  padding:.375rem 1.75rem .375rem .75rem;
+  line-height:1.5;
+  font-family:Arial;
+  font-size:1rem;
+  font-weight:400;
+  height:38px;
+  width: 209px;
+  border-radius: .25rem;
+  border:1px solid #ced4da;
+  display:inline-block;
 }
