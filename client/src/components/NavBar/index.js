@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import logo from "./checkMark.jpg"
 
-function Navbar() {
+function Navbar(props) {
   return (
+    
     <ul className="nav flex-column nav nav-tabs">
+      <li><img id="logo" alt="logo" src={props.image}/></li>
       <li className="nav-item">
         <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
           Home
