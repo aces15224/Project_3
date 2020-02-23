@@ -71,7 +71,7 @@ const Form = (props) => {
         };  
 
     return(         
-        <form className="form-group mt-5 mb-5" onSubmit={handleFormSubmit} >
+        <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
                 <label className="taskAdd"><h3>Input Task</h3></label>
                 <br></br>
