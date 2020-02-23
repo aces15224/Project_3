@@ -12,14 +12,18 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <NavBar />
-            <div className="container" id="mainDisplay">
+        <div className="container">
+          <div className="row">
+            <div className="col-4">
+              <NavBar />
+            </div>
+            <div className="col-8" id="mainDisplay">
               <Route exact path="/" component={CalendarPage} />
               <Route exact path="/tasks" component={taskBank} />
               <Route exact path="/timer" component={PomodoroTimer} />
               <Route exact path="/stats" component={UserStats} />
-            </div>  
+            </div> 
+          </div>     
         </div>
       </Router>
     )
