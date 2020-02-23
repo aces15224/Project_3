@@ -1,13 +1,12 @@
 import React from "react";
 import moment from "moment";
-import './pomodoroTimer.scss'
+import './pomodoroTimer.css'
 
 const Header = () => <h1>Pomodoro Clock</h1>
-
 const SetTimer = ({ type, value, handleClick }) => (
-  <div class='SetTimer'>
-    <div id={`${type}-label`}>{type == 'session' ? 'Session ' : 'Break '}Length</div>
-    <div class='SetTimer-controls'>
+  <div className='SetTimer'>
+    <div id={`${type}-label`}>{type === 'session' ? 'Session ' : 'Break '}Length</div>
+    <div className='SetTimer-controls'>
       <button id={`${type}-decrement`} onClick={() => handleClick(false, `${type}Value`)}>&darr;</button>
       <h1 id={`${type}-length`}>{value}</h1>
       <button id={`${type}-increment`} onClick={() => handleClick(true, `${type}Value`)}>&uarr;</button>
@@ -16,14 +15,14 @@ const SetTimer = ({ type, value, handleClick }) => (
 )
 
 const Timer = ({ mode, time}) => (
-  <div class='Timer'>
+  <div className='Timer'>
     <h1 id='timer-label'>{mode === 'session' ? 'Session' : 'Break'}</h1>
     <h1 id='time-left'>{time}</h1>
   </div>
 )
 
 const Controls = ({ active, handleReset, handlePlayPause  }) => (
-  <div class='Controls'>
+  <div className='Controls'>
     <button id='start_stop' onClick={handlePlayPause}>
       { active ? <span>&#10074;&#10074;</span> : <span>&#9658;</span> }
     </button>
@@ -45,19 +44,19 @@ class PomodoroTimer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.time == 0 && prevState.mode == 'session') {
+    if (prevState.time === 0 && prevState.mode === 'session') {
       this.setState({ time: this.state.breakValue * 60 * 1000, mode: 'break' })
       this.audio.play()
     }
-    if (prevState.time == 0 && prevState.mode == 'break') {
+    if (prevState.time === 0 && prevState.mode === 'break') {
       this.setState({ time: this.state.sessionValue * 60 * 1000, mode: 'session'})
       this.audio.play()
     }
   }
 
   handleSetTimers = (inc, type) => {
-    if(this.state[type] ==  60 && inc) return
-    if(this.state[type] == 1 && !inc) return
+    if(this.state[type] ===  60 && inc) return
+    if(this.state[type] === 1 && !inc) return
     this.setState({ [type]: this.state[type] + (inc ? 1 : -1) })
   }
 
@@ -97,7 +96,7 @@ class PomodoroTimer extends React.Component {
      return(
        <div>
          <Header/>
-         <div class='settings'>
+         <div className='settings'>
            <SetTimer type='break' value={this.state.breakValue} handleClick={this.handleSetTimers}/>
            <SetTimer type='session' value={this.state.sessionValue} handleClick={this.handleSetTimers}/>
          </div>
