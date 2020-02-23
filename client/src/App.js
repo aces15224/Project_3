@@ -20,9 +20,6 @@ class App extends Component {
               <Route exact path="/timer" component={PomodoroTimer} />
               <Route exact path="/stats" component={UserStats} />
             </div>  
-            
-
-          
         </div>
       </Router>
     )
