@@ -1,9 +1,13 @@
   
- import React, { Component } from "react";
+ import React from "react";
  
 
- class register extends React.Component {
-    
-}
+ function registerPage() {
+    return (
+      <div>
+        <h1>Register Info</h1>
+      </div>
+    );
+  }
 
-export default register;
+export default registerPage;
