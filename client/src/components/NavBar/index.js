@@ -14,10 +14,10 @@ function Navbar(props) {
       </li>
       <li className="nav-item">
         <Link
-          to="/dashboard"
-          className={window.location.pathname === "/dashboard" ? "nav-link active" : "nav-link"}
+          to="/register"
+          className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
         >
-          Dashboard
+          Register
         </Link>
       </li>
       <li className="nav-item">

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import NavBar from "./components/NavBar";
+import registerPage from "./pages/register";
 import CalendarPage from "./pages/calendar";
 import taskBank from "./pages/TaskBankHome";
 import PomodoroTimer from "./pages/pomodoroTimer";
@@ -20,6 +21,7 @@ class App extends Component {
             </div>
             <div className="col-8" id="mainDisplay">
               <Route exact path="/" component={CalendarPage} />
+              <Route exact path="/register" component={registerPage} />
               <Route exact path="/tasks" component={taskBank} />
               <Route exact path="/timer" component={PomodoroTimer} />
               <Route exact path="/stats" component={UserStats} />
