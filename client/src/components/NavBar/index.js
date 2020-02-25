@@ -14,14 +14,6 @@ function Navbar(props) {
       </li>
       <li className="nav-item">
         <Link
-          to="/dashboard"
-          className={window.location.pathname === "/dashboard" ? "nav-link active" : "nav-link"}
-        >
-          Dashboard
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
           to="/tasks"
           className={window.location.pathname === "/tasks" ? "nav-link active" : "nav-link"}
         >
@@ -44,6 +36,22 @@ function Navbar(props) {
           User Stats
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to="/login"
+          className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
+        >
+          Login Page
+        </Link>
+      </li>
+      <li className="nav-item">
+          <Link
+            to="/register"
+            className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
+          >
+            Register
+          </Link>
+        </li>
     </ul>
   );
 }
