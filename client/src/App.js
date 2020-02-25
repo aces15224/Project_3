@@ -7,6 +7,8 @@ import taskBank from "./pages/TaskBankHome";
 import PomodoroTimer from "./pages/pomodoroTimer";
 import UserStats from "./pages/userStats";
 import logo from "./checkMark.jpg"
+import LoginForm from "./pages/login"
+
 import './App.css';
 
 class App extends Component {
@@ -25,6 +27,8 @@ class App extends Component {
               <Route exact path="/tasks" component={taskBank} />
               <Route exact path="/timer" component={PomodoroTimer} />
               <Route exact path="/stats" component={UserStats} />
+               <Route exact path="/login" component={LoginForm} />
+
             </div> 
           </div>     
         </div>
