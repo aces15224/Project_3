@@ -39,4 +39,19 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/completed", function(req, res) {
+    db.Complete.create({
+      category: req.body.category,
+    }).then(function(dbModel) {
+      console.log("yes!")
+      res.json(dbModel);
+    });
+  });
+  
+  app.get("/api/completed", function(req, res) {
+    db.Complete.find({}).then(function(dbModel) {
+      res.json(dbModel);
+    });
+  });
+
 }
