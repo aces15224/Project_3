@@ -52,6 +52,14 @@ function Navbar(props) {
             Register
           </Link>
         </li>
+        <li className="nav-item">
+        <Link
+          to="/about"
+          className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}
+        >
+          About Us
+        </Link>
+      </li>
     </ul>
   );
 }

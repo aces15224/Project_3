@@ -11,20 +11,14 @@
   },
   "homepage": "TBD",
   "scripts": {
-    "devStart": "nodemon server.js",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*\" \"npm run client\"",
-    "server": "npm kill && nodemon",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "kill": "kill-port 3001  ",
-    "lint": "eslint --quiet .",
-    "lint:fix": "eslint --fix .",
-    "tests": "npm kill && NODE_ENV=test nyc --reporter=html --reporter=text mocha tests/**/*.spec.js --exit",
-    "test:coverage": "nyc report --reporter=text-lcov | coveralls"
+    "heroku-postbuild": "npm run build"
   },
   "nodemonConfig": {
     "events": {
