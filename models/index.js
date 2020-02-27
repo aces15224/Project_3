@@ -1,7 +1,5 @@
 module.exports = {
-  Task: require("./Task")
-  // ,
-  // Category: require("./Category"),
-  // User: require("./User")
-
+  Task: require("./Task"),
+  User: require("./users"),
+  Complete: require("./Complete")
 };

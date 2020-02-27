@@ -67,9 +67,9 @@ const DropDownDate = (props) => {
                     }
                     defaultValues={                     
                         {
-                            year: 'select year',
-                            month: 'select month',
-                            day: 'select day'
+                            year: 'Select Year',
+                            month: 'Select Month',
+                            day: 'Select Day'
                         }
                     }
                     options={                           

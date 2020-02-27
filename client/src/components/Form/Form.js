@@ -1,10 +1,8 @@
-import React, {useRef, useState } from 'react';
+import React, {useRef, useState, useEffect } from 'react';
 import DropDownDate from "../DropdownDate/DropDownDate"
 import API from "../../utils/API";
 
-
-
-const Form = () => {
+const Form = (props) => {
     const [taskForm, setTaskForm] = useState({
        taskItem: "",
         createdOn:"",
@@ -17,6 +15,11 @@ const Form = () => {
     const newDate = useRef(); 
     const priorityRef = useRef();
     const categoryRef = useRef();
+
+    useEffect(() => {
+        console.log(taskForm);
+        
+    }, [taskForm]);
 
 //Form Submit Function
 
@@ -53,20 +56,22 @@ const Form = () => {
             category: categoryRef.current.value            
         }
         
-        
         setTaskForm(taskData)     
         
-        
-        console.log(taskForm)   
         API.postTask(taskData)
         .then(console.log(taskData))
             taskRef.current.value = "";
             priorityRef.current.value = "";
             categoryRef.current.value = "";
+        
+        //repeat get call and reload to display//
+
+        API.getTasks()
+        window.location.reload()
         };  
-     
+
     return(         
-        <form className="form-group mt-5 mb-5" onSubmit={handleFormSubmit} >
+        <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
                 <label className="taskAdd"><h3>Input Task</h3></label>
                 <br></br>

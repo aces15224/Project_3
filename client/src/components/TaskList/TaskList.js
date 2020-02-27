@@ -54,6 +54,7 @@ const TaskList = (props) => {
   const complete = (key) => {
     axios.delete("/api/tasks/"+key)
     .then((res) => {
+      window.location.reload();
       console.log(res);
     });
   }   
@@ -92,13 +93,13 @@ const TaskList = (props) => {
           <div className="card" key={i}>
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
-                <button className="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
-                aria-controls="collapseOne">               
+                <button className="btn btn-link" data-toggle="collapse" data-target={"#collapse"+ i} aria-expanded="false" 
+                aria-controls={i}>               
                   {category}
                 </button>
               </h5>
             </div>
-            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
+            <div id={"collapse"+ i} className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
               <div className="card-body">
                 <ul>
                   {taskObject.length && taskObject.map((obj, i) => {
@@ -122,4 +123,3 @@ const TaskList = (props) => {
 };
 
 export default TaskList;
-

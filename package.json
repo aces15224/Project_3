@@ -11,20 +11,14 @@
   },
   "homepage": "TBD",
   "scripts": {
-    "devStart": "nodemon server.js",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*\" \"npm run client\"",
-    "server": "npm kill && nodemon",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "kill": "kill-port 3001  ",
-    "lint": "eslint --quiet .",
-    "lint:fix": "eslint --fix .",
-    "tests": "npm kill && NODE_ENV=test nyc --reporter=html --reporter=text mocha tests/**/*.spec.js --exit",
-    "test:coverage": "nyc report --reporter=text-lcov | coveralls"
+    "heroku-postbuild": "npm run build"
   },
   "nodemonConfig": {
     "events": {
@@ -59,13 +53,11 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.9.1",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",
-    "connect-ensure-login": "^0.1.1",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "helmet": "^3.21.2",
@@ -80,7 +72,9 @@
     "passport-session": "^1.0.2",
     "react": "^16.12.0",
     "react-big-calendar": "^0.24.0",
+    "react-countdown-circle-timer": "^1.1.1",
     "react-dom": "^16.12.0",
+    "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
     "render": "^0.1.4",

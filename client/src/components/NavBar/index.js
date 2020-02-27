@@ -1,20 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import logo from "./checkMark.jpg"
 
-function Navbar() {
+function Navbar(props) {
   return (
-    <ul className="nav nav-tabs">
+    
+    <ul className="nav flex-column nav nav-tabs">
+      <li><img id="logo" alt="logo" src={props.image}/></li>
       <li className="nav-item">
         <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
           Home
-        </Link>
-      </li>
-      <li className="nav-item">
-        <Link
-          to="/dashboard"
-          className={window.location.pathname === "/dashboard" ? "nav-link active" : "nav-link"}
-        >
-          Dashboard
         </Link>
       </li>
       <li className="nav-item">
@@ -39,6 +34,30 @@ function Navbar() {
           className={window.location.pathname === "/stats" ? "nav-link active" : "nav-link"}
         >
           User Stats
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/login"
+          className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
+        >
+          Login Page
+        </Link>
+      </li>
+      <li className="nav-item">
+          <Link
+            to="/register"
+            className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
+          >
+            Register
+          </Link>
+        </li>
+        <li className="nav-item">
+        <Link
+          to="/about"
+          className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}
+        >
+          About Us
         </Link>
       </li>
     </ul>
