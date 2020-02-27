@@ -33,6 +33,7 @@ const RegisterPage = (props) => {
           .then(function (response) {
               //check for errors response.data.error
             console.log(response);
+
           })
           .catch(function (error) {
               //throw generic error
@@ -41,6 +42,9 @@ const RegisterPage = (props) => {
          
         console.log("THIS IS THE STATE", userData)
     };
+
+
+    
     return (
         <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">

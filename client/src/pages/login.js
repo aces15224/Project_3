@@ -25,14 +25,15 @@ const LoginForm = (props) => {
           })
           .then(function (response) {
             console.log(response);
+            //response.data.error  throw an error
+
+            //redirect
           })
           .catch(function (error) {
             console.log(error);
+            //if you hit this spot throw an alert error
           })
-          .then(function () {
-            // always executed
-          }); 
-
+         
     };
 
     
