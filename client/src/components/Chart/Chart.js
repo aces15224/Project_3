@@ -8,8 +8,8 @@ class BarChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    careerTask:5,
-    careerComplete:10,
+    careerTask:0,
+    careerComplete:0,
     educationTask:0,
     educationComplete:0,
     fitnessTask:0,
