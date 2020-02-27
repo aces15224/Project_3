@@ -24,9 +24,9 @@ var UserSchema = new Schema({
     required: "Password is Required",
     validate: [
       function(input) {
-        return input.length >= 6;
+        return input.length >= 5;
       },
-      "Password should be longer."
+      "Password should be longer 5 characters."
     ]
   },
   // `email` must be of type String

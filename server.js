@@ -3,16 +3,14 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 // const bcrypt = require('bcrypt')
+const mongoose = require('mongoose');
 const passport = require('./config/passport');
-const mongoose = require("mongoose");
 
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.set('view-engine', 'ejs')
-app.use(express.urlencoded({ extended: false }))
-const users = [];
+app.set('view-engine', 'ejs');
+app.use(express.urlencoded({ extended: false }));
 
 const db = require("./models");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user:password1@ds225375.mlab.com:25375/heroku_5b0wf0xm";
@@ -29,62 +27,59 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true,
 // })
 
 
-LocalStrategy = require('passport-local').Strategy;
-passport.use(new LocalStrategy(
-function(username, password, done) {
+// LocalStrategy = require('passport-local').Strategy;
+// passport.use(new LocalStrategy(
+// function(username, password, done) {
 
-  console.log("my username is" + username)
-  db.User.findOne({ username: username }, function(err, user) {
-    if (err) { return done(err); }
+//   console.log("my username is" + username)
+//   db.User.findOne({ username: username }, function(err, user) {
+//     if (err) { return done(err); }
+//     if (!user) {
+//       return done(null, false, { message: 'Incorrect username.' });
+//     }
+//     if (!user.validPassword(password)) {
+//       return done(null, false, { message: 'Incorrect password.' });
+//     }
+//     return done(null, user);
+//   });
+// }
+// ));
+
+
+app.get('/api/login', function(req, res){
+
+
+  console.log(req.query);
+
+  db.User.findOne({ email: req.query.username }, function(err, user) {
+    if (err) {res.json("error") }
+
+    if(user){console.log(user)}
     if (!user) {
-      return done(null, false, { message: 'Incorrect username.' });
+      res.json("no user")
+
+    //  return done(null, false, { message: 'Incorrect username.' });
     }
-    if (!user.validPassword(password)) {
-      return done(null, false, { message: 'Incorrect password.' });
-    }
-    return done(null, user);
-  });
-}
-));
-
-
-
-app.post('/api/login', function(req, res){
-
-      console.log(req.body.password)
-      // })
-      db.User.findOne({ email: req.body.username }, function(err, user) {
-        if (err) {res.json("error") }
-
-        if(user){console.log(user)}
-        if (!user) {
-          res.json("no user")
-
-        //  return done(null, false, { message: 'Incorrect username.' });
-        }
-          if (req.body.password == user.password) {
-           
-            res.json(user)
-        //    return done(null, false, { message: 'Incorrect password.' });
-          
-        }else{
-          res.json({"error": "incorrect password"})
-        }
-        
-      });
+      if (req.query.password == user.password) {
+       
+        res.json(user)
+    //    return done(null, false, { message: 'Incorrect password.' });
       
+    }else{
+      res.json({"error": "incorrect password"})
+    }
+  });
 
-})
+});
 
 
-
-
-app.post('api/register', function(req,res){
+app.get('/api/register', function(req,res){
 
   //db.User.create()
+  console.log(req.query)
 
   //create a user here 
-  db.User.create(req.body)
+  db.User.create(req.query)
     .then(function(dbUser) {
       // If saved successfully, send the the new User document to the client
       res.json(dbUser);
@@ -93,7 +88,6 @@ app.post('api/register', function(req,res){
       // If an error occurs, send the error to the client
       res.json(err);
     });
-
 })
 
 // app.post('/register', async (req, res) => {
