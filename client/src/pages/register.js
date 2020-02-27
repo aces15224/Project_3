@@ -32,10 +32,12 @@ const RegisterPage = (props) => {
           })
           .then(function (response) {
               //check for errors response.data.error
-            console.log(response);
+                alert("try again. insufficient username/password");
+              console.log(response);
           })
           .catch(function (error) {
               //throw generic error
+              alert("try again. insufficient username/password");
             console.log(error);
           })
          
