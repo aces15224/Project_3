@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import axios from 'axios';
+
 // import API from "../../utils/API";
 const RegisterPage = (props) => {
     // const [userForm, setUserForm] = useState({
@@ -18,11 +20,25 @@ const RegisterPage = (props) => {
         // alert("works")
         // creFormusing form data & dropdown
         var userData = {
+            username: emailRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
             firstname: firstname.current.value,
             lastname: lastname.current.value
         }
+
+        axios.get('/api/register', {
+            params: userData
+          })
+          .then(function (response) {
+              //check for errors response.data.error
+            console.log(response);
+          })
+          .catch(function (error) {
+              //throw generic error
+            console.log(error);
+          })
+         
         console.log("THIS IS THE STATE", userData)
     };
     return (
