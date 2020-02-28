@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
-
+​
 // import API from "../../utils/API";
 const RegisterPage = (props) => {
     // const [userForm, setUserForm] = useState({
@@ -26,21 +26,19 @@ const RegisterPage = (props) => {
             firstname: firstname.current.value,
             lastname: lastname.current.value
         }
-
+​
         axios.get('/api/register', {
             params: userData
           })
           .then(function (response) {
-              //check for errors response.data.error
-                alert("try again. insufficient username/password");
-              console.log(response);
+            console.log(response);
           })
           .catch(function (error) {
-              //throw generic error
-              alert("try again. insufficient username/password");
             console.log(error);
           })
-         
+          .then(function () {
+            // always executed
+          }); 
         console.log("THIS IS THE STATE", userData)
     };
     return (
@@ -71,5 +69,5 @@ const RegisterPage = (props) => {
         </form>
     )
 }
-
+​
 export default RegisterPage;
