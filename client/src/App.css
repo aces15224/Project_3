@@ -58,6 +58,10 @@ body{
 
 }
 
+#loginDisplay{
+  background-image: url("./components/NavBar/checkMark.jpg");
+}
+
 #cardTitle{
   color:white;
   font-weight:bold;
