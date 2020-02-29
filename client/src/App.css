@@ -62,9 +62,9 @@ body{
 }
 
 #loginDisplay{
-  background-image: url("./checkMark2.jpg");
+  background-image: url("../src/pages/MotivateQuote.jpg");
   background-repeat: no-repeat;
-  justify-content: center;
+  background-size: 100% 100%;
   /* background-size: cover; */
   overflow-x:hidden;
 }
