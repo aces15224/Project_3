@@ -31,10 +31,10 @@ const LoginForm = (props) => {
     };
 
     return (
-        <div class="card">
-            <h5 id="loginText" class="card-header">Welcome to the Motivate Me App!  Please Login!</h5>
-            <div class="card-body">
-                <div id="loginDisplay" class="jumbotron jumbotron-fluid">
+        <div className="card">
+            <h5 id="loginText" className="card-header">Welcome to the Motivate Me App!  Please Login!</h5>
+            <div className="card-body">
+                <div id="loginDisplay" className="jumbotron jumbotron-fluid">
                 </div>
                 <form className="form-group" onSubmit={handleFormSubmit} >
                     <div className="form-group">
@@ -52,7 +52,7 @@ const LoginForm = (props) => {
                     <button type="submit" className="submitBtn btn btn-primary">
                         Submit
                     </button>
-                    <a href="/register" class="btn btn-success">Register</a>
+                    <a href="/register" className="btn btn-success">Register</a>
                 </form>
             </div>
         </div>
