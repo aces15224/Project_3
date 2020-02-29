@@ -44,12 +44,11 @@ body{
   background-image: url(https://cdn.wallpapersafari.com/78/33/mi18Yw.jpg);
   margin:0px;
 }
-#taskHeader, #userCard{
+#loginText, #taskHeader, #userCard{
   text-align:center;
   text-shadow: -1px -1px 0 #FC0, 1px -1px 0 #FC0, -1px 1px 0 #FC0, 1px 1px 0 #FC0;
   font-weight:bold;
-  /* background-image: url("./pages/background.jpg"); */
-  background-color: rgb(247, 43, 43);
+  background-image: url("./pages/background.jpg");
 }
 .taskButton{
   color:black;
@@ -60,6 +59,9 @@ body{
 
 #loginDisplay{
   background-image: url("./components/NavBar/checkMark.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x:hidden;
 }
 
 #cardTitle{
