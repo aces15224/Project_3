@@ -20,7 +20,7 @@ const LoginForm = (props) => {
           })
           .then(function (response) {
             console.log(response);
-            window.location.replace("/")
+            window.location.replace("/calendar")
             //redirect
           })
           .catch(function (error) {

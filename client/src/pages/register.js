@@ -23,7 +23,7 @@ const RegisterPage = (props) => {
           })
           .then(function (response) {
             console.log(response);
-            window.location.replace("/login")
+            window.location.replace("/")
 
           })
           .catch(function (error) {
