@@ -6,12 +6,10 @@ const RegisterPage = (props) => {
     const passwordRef = useRef();
     const firstname = useRef();
     const lastname = useRef();
- 
-    //Form Submit Function
+    
     const handleFormSubmit = e => {
         e.preventDefault();
-        // alert("works")
-        // creFormusing form data & dropdown
+        
         var userData = {
             username: emailRef.current.value,
             email: emailRef.current.value,
@@ -19,20 +17,23 @@ const RegisterPage = (props) => {
             firstname: firstname.current.value,
             lastname: lastname.current.value
         }
+
         axios.get('/api/register', {
             params: userData
           })
           .then(function (response) {
             console.log(response);
+            window.location.replace("/login")
+
           })
           .catch(function (error) {
+              //throw generic error
             console.log(error);
           })
-          .then(function () {
-            // always executed
-          }); 
+         
         console.log("THIS IS THE STATE", userData)
     };
+    
     return (
         <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
@@ -61,4 +62,5 @@ const RegisterPage = (props) => {
         </form>
     )
 }
+
 export default RegisterPage;
