@@ -41,7 +41,7 @@ li{
 }
 
 body{
-  background-color:rgba(0,0,0,.03);
+  background-image: url(https://cdn.wallpapersafari.com/78/33/mi18Yw.jpg);
   margin:0px;
 }
 #taskHeader, #userCard{
@@ -92,12 +92,21 @@ body{
   float:left;
   margin-left:0px;
   padding:0px;
+  background-color: white;
+  border-radius: 25px;
+  border: 2px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 #mainDisplay{
   float:right;
   background-color: white;
   min-height: 500px;
+  border-radius: 25px;
+  border: 2px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 #formContainer{
@@ -116,4 +125,7 @@ body{
   border-radius: .25rem;
   border:1px solid #ced4da;
   display:inline-block;
+}
+a:active {
+  color: rgba(232, 129, 252, 0.557);
 }
