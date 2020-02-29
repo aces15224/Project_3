@@ -37,23 +37,25 @@ const RegisterPage = (props) => {
     return (
         <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
-                <label className="taskAdd"><h3>User Info</h3></label>
+                <div className="jumbotron newUser">
+                </div>
+                <label className="taskAdd"><h3>Register</h3></label>
                 <br></br>
                 <input className="col-12 form-control" ref={emailRef} type="text"
                     name="email"
-                    placeholder="input email"
+                    placeholder="Email"
                 />
                 <input className="col-12 form-control" ref={passwordRef} type="text"
                     name="password"
-                    placeholder="input password"
+                    placeholder="Password"
                 />
                  <input className="col-12 form-control" ref={firstname} type="text"
                     name="firstname"
-                    placeholder="input first name"
+                    placeholder="First Name"
                 />
                  <input className="col-12 form-control" ref={lastname} type="text"
                     name="lastname"
-                    placeholder="input last name"
+                    placeholder="Last Name"
                 />
             </div>
             <button type="submit" className="submitBtn btn btn-primary">

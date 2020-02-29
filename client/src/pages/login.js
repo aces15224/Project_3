@@ -34,19 +34,19 @@ const LoginForm = (props) => {
         <div className="card">
             <h5 id="loginText" className="card-header">Welcome to the Motivate Me App!  Please Login!</h5>
             <div className="card-body">
-                <div id="loginDisplay" className="jumbotron jumbotron-fluid">
-                </div>
                 <form className="form-group" onSubmit={handleFormSubmit} >
                     <div className="form-group">
-                        <label className="taskAdd"><h3>User Info</h3></label>
+                    <div id="loginDisplay" className="jumbotron jumbotron-fluid">
+                </div>
+                        <label className="taskAdd"><h3>Login</h3></label>
                         <br></br>
                         <input className="col-12 form-control" ref={emailRef} type="text"
                             name="email"
-                            placeholder="input email"
+                            placeholder="Email"
                         />
                         <input className="col-12 form-control" ref={passwordRef} type="text"
                             name="password"
-                            placeholder="input password"
+                            placeholder="Password"
                         />
                     </div>
                     <button type="submit" className="submitBtn btn btn-primary">
