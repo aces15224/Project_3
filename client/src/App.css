@@ -44,7 +44,7 @@ body{
   background-image: url(https://cdn.wallpapersafari.com/78/33/mi18Yw.jpg);
   margin:0px;
 }
-#loginText, #taskHeader, #userCard{
+#aboutHeader, #loginText, #taskHeader, #userCard{
   text-align:center;
   text-shadow: -1px -1px 0 #FC0, 1px -1px 0 #FC0, -1px 1px 0 #FC0, 1px 1px 0 #FC0;
   font-weight:bold;
@@ -55,11 +55,14 @@ body{
   color:black;
   font-weight:bold;
   text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-
+}
+.about{
+  text-align: left;
+  font-size: 14px;
 }
 
 #loginDisplay{
-  background-image: url("./components/NavBar/checkMark.jpg");
+  background-image: url("./checkMark2.jpg");
   background-repeat: no-repeat;
   justify-content: center;
   /* background-size: cover; */
