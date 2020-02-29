@@ -1,44 +1,43 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
 // import API from "../../utils/API";
-
+​
 const LoginForm = (props) => {
-
+​
     const emailRef = useRef();
     const passwordRef = useRef();
     
     const handleFormSubmit = e => {
         e.preventDefault();
         // alert("works")
-
+​
         // creFormusing form data & dropdown
         var userData = {
             username: emailRef.current.value,
             password: passwordRef.current.value,
         }
-
+​
         console.log("THIS IS THE STATE", userData)
-
-
+​
+​
           axios.get('/api/login', {
             params: userData
           })
           .then(function (response) {
             console.log(response);
-            //response.data.error  throw an error
-
-            //redirect
           })
           .catch(function (error) {
             console.log(error);
-            //if you hit this spot throw an alert error
           })
-         
+          .then(function () {
+            // always executed
+          }); 
+​
     };
-
+​
     
-
-
+​
+​
     return (
         <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
@@ -59,5 +58,5 @@ const LoginForm = (props) => {
         </form>
     )
 }
-
+​
 export default LoginForm;
