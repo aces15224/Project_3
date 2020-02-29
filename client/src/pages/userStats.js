@@ -3,12 +3,14 @@ import Chart from "../components/Chart/Chart"
 
 function UserStats() {
   return (
-    <div>
-      <Chart/>
-      <h1>User Stats</h1>
-      <p>
-        What have you....
-      </p>
+    <div id="userCardMain" class="card">
+      <div id="userCard" class="card-header">
+        <h1>User Stats</h1>
+      </div>
+      <div id="cardBody" class="card-body">
+        <h5 id="cardTitle" class="card-title">See where you spend most of your time!</h5>
+        <div id="chart"><Chart/></div>
+      </div>
     </div>
   );
 }
