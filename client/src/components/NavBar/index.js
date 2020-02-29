@@ -8,7 +8,23 @@ function Navbar(props) {
     <ul className="nav flex-column nav nav-tabs">
       <li><img id="logo" alt="logo" src={props.image}/></li>
       <li className="nav-item">
-        <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+        <Link
+          to="/"
+          className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+        >
+          Login Page
+        </Link>
+      </li>
+      <li className="nav-item">
+          <Link
+            to="/register"
+            className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
+          >
+            Register
+          </Link>
+        </li>
+      <li className="nav-item">
+        <Link to="/home" className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}>
           Home
         </Link>
       </li>
@@ -36,22 +52,6 @@ function Navbar(props) {
           User Stats
         </Link>
       </li>
-      <li className="nav-item">
-        <Link
-          to="/login"
-          className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
-        >
-          Login Page
-        </Link>
-      </li>
-      <li className="nav-item">
-          <Link
-            to="/register"
-            className={window.location.pathname === "/register" ? "nav-link active" : "nav-link"}
-          >
-            Register
-          </Link>
-        </li>
         <li className="nav-item">
         <Link
           to="/about"
