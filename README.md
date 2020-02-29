@@ -16,7 +16,7 @@ The pomodoro timer is a method of time management that uses a timer to break dow
 
 ### Stats Page
 
-Motivate Me also gives its users access to individaul tasks. Clicking on the User Stats page will bring you to a graph that will illustrate just how much time you've spent on each category of a task. The graph shows how many tasks in each category have been completed, how many are being worked on currently, and lets the user see where they devote most of their efforts.
+Motivate Me also gives its users access to individaul stats. Clicking on the User Stats page will bring you to a graph that will illustrate just how much time you've spent on each category of a task. The graph shows how many tasks in each category have been completed, how many are being worked on currently, and lets the user see where they devote most of their efforts.
 
 Live Demo:
 
