@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react'
 import axios from "axios";
+import API from "../../utils/API";
+
 
 //Global Array for Unique Categories
 const categoryArray = [];
@@ -51,10 +53,25 @@ const TaskList = (props) => {
   };
 
   //Click handler that removes completed tasks
-  const complete = (key) => {
+  const complete = (key, taskObject) => {
+    for(let i=0; i<taskObject.length; i++){
+      if(taskObject[i].id===key){
+        console.log(taskObject[i].category)
+        var taskComplete={
+          category:taskObject[i].category
+        }
+      }
+    }
+
+    API.postCategory(taskComplete)
+    .then(console.log('taskComplete'))
+    console.log("!" + taskComplete.category)
+    console.log("!" + key)
+    
+    console.log(taskObject[0].id)
     axios.delete("/api/tasks/"+key)
     .then((res) => {
-      window.location.reload();
+      // window.location.reload();
       console.log(res);
     });
   }   
@@ -93,7 +110,7 @@ const TaskList = (props) => {
           <div className="card" key={i}>
             <div className="card-header" id="headingOne">
               <h5 className="mb-0">
-                <button className="btn btn-link" data-toggle="collapse" data-target={"#collapse"+ i} aria-expanded="false" 
+                <button className="btn btn-link taskButton" data-toggle="collapse" data-target={"#collapse"+ i} aria-expanded="false" 
                 aria-controls={i}>               
                   {category}
                 </button>
@@ -107,7 +124,7 @@ const TaskList = (props) => {
                     return (
                       <div className="card" key={obj.id}> Due: {obj.dueDate}  Priority Level: {obj.priority}
                           <div className="card-header">
-                              Task: {obj.taskItem}<button className="btn btn-danger btn-xs" onClick={() => complete(obj.id)}>Completed</button>
+                              Task: {obj.taskItem}<button className="btn btn-danger btn-xs" onClick={() => complete(obj.id, taskObject)}>Completed</button>
                           </div>
                       </div>
                     )

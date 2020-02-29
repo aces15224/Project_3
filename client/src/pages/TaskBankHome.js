@@ -6,7 +6,7 @@ const TaskBankHome = () => {
 
   return (
     <div className="card" id="taskCard">
-      <div className="card-header">
+      <div id="taskHeader" className="card-header">
         <h1>Task Bank</h1>
       </div>
       <div className="card-body">
