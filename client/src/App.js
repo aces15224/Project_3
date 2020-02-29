@@ -23,12 +23,12 @@ class App extends Component {
               <NavBar image={logo}/>
             </div>
             <div className="col-8" id="mainDisplay">
-              <Route exact path="/" component={CalendarPage} />
+              <Route exact path="/" component={LoginForm} />
               <Route exact path="/register" component={RegisterPage} />
               <Route exact path="/tasks" component={taskBank} />
               <Route exact path="/timer" component={PomodoroTimer} />
               <Route exact path="/stats" component={UserStats} />
-              <Route exact path="/login" component={LoginForm} />
+              <Route exact path="/home" component={CalendarPage} />
               <Route exact path="/about" component={About} />
 
             </div> 
