@@ -1,19 +1,12 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
-​
-// import API from "../../utils/API";
+
 const RegisterPage = (props) => {
-    // const [userForm, setUserForm] = useState({
-    //     email: "",
-    //     password: "",
-    // });
     const emailRef = useRef();
     const passwordRef = useRef();
     const firstname = useRef();
     const lastname = useRef();
-    // useEffect(() => {
-    //     console.log();
-    // }, []);
+ 
     //Form Submit Function
     const handleFormSubmit = e => {
         e.preventDefault();
@@ -26,7 +19,6 @@ const RegisterPage = (props) => {
             firstname: firstname.current.value,
             lastname: lastname.current.value
         }
-​
         axios.get('/api/register', {
             params: userData
           })
@@ -69,5 +61,4 @@ const RegisterPage = (props) => {
         </form>
     )
 }
-​
 export default RegisterPage;
