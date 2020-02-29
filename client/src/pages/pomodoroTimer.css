@@ -52,6 +52,13 @@
     background-size: cover;
     overflow-x:hidden; 
   }
+
+  .newUser{
+    background-image:url("./NewUser.png");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center center;
+  }
   
 
  

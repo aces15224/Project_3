@@ -37,6 +37,8 @@ const RegisterPage = (props) => {
     return (
         <form className="form-group" onSubmit={handleFormSubmit} >
             <div className="form-group">
+                <div className="jumbotron newUser">
+                </div>
                 <label className="taskAdd"><h3>Register</h3></label>
                 <br></br>
                 <input className="col-12 form-control" ref={emailRef} type="text"
