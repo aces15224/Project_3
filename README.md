@@ -4,7 +4,9 @@
 
 Motivate Me is a React based Time Management App that uses MongoDB to store user information. This application was designed to list and schedule tasks, keep track of corresponding due dates, and help the user manage their time and efforts more efficiently. In order to do this, Motivate Me gives the user access to four key features: a task list, a calendar, an overview user stas, and a pomorodor timer.
 
-Task List This application stores each of the user's tasks and lets them sort them in specific ways. Each task is organized in to one of six categories (Personal, Career, Health, Fitness, Chores, and Education). In addition, the user can specify each task's level of importance, input a due-date, and mark it as completed whenever the user feels it is appropriate.
+###Task List 
+
+This application stores each of the user's tasks and lets them sort them in specific ways. Each task is organized in to one of six categories (Personal, Career, Health, Fitness, Chores, and Education). In addition, the user can specify each task's level of importance, input a due-date, and mark it as completed whenever the user feels it is appropriate.
 
 ### Calendar
 
